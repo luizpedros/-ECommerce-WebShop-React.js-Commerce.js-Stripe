@@ -5,10 +5,10 @@ import { Grid } from "@material-ui/core";
 const products = [
     {id: 1, 
      name:'Shoes', 
-     descripotion: 'Running shoes.'},
+     descripotion: 'Running shoes.', price: 'R$5'},
     {id: 2, 
      name:'Macbok', 
-     descripotion: 'Apple macbook'}
+     descripotion: 'Apple macbook', price: 'R$10'},
 ];
 
 //products container
