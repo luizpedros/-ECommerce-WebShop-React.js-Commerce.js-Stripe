@@ -1,1 +1,2 @@
-# -ECommerce-WebShop-React.js-Commerce.js-Stripe
+# Project ECommerce
+## Web Shop
