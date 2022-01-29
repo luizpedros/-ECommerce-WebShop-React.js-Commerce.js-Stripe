@@ -1,12 +1,14 @@
 import React from 'react';
-
 //layout dos produtos
 import { Card, CardMedia, CardContent, CardActions, Typography, IconBotton, CardActionArea } from '@material-ui/core';
-
 //carrinho
 import { AddShoppingCart } from '@material-ui/icons';
+//styles
+import useStyles from './styles';
 
 const Product = ({product}) => {
+    const classes = useStyles();
+
   return( 
     <Card className={classes.root}>
         <CardMedia className={classes.media} image='' title={product.name}/>
