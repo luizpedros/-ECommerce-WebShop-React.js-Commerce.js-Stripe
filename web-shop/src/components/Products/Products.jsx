@@ -7,10 +7,10 @@ import Product from "./Product/Product";
 const products = [
     {id: 1, 
      name:'Shoes', 
-     descripotion: 'Running shoes.', price: 'R$5'},
+     descripotion: 'Running shoes.', price: 'R$5', image:'https://media.istockphoto.com/photos/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-picture-id1303978937?b=1&k=20&m=1303978937&s=170667a&w=0&h=az5Y96agxAdHt3XAv7PP9pThdiDpcQ3otWWn9YuJQRc='},
     {id: 2, 
      name:'Macbook', 
-     descripotion: 'Apple macbook', price: 'R$10'},
+     descripotion: 'Apple macbook', price: 'R$10', image:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spacegray-select-202110?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1632788573000'},
 ];
 
 //products container
