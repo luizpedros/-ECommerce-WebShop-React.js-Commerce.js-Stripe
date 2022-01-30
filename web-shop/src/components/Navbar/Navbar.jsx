@@ -20,7 +20,7 @@ const Navbar = () => {
         <Toolbar>
             <Typography variant='h6' className={classes.title} color='inherit'>
                 <img src={logo} about='client' height='25px' className={classes.image} />
-                Commerce.js
+                Comercil
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.button}>
