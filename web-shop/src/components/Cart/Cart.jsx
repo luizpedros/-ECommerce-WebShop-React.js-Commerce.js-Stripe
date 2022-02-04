@@ -38,7 +38,7 @@ const Cart = ({ cart }) => {
     return(    
         <Container>
             <div className={classes.toolbar}/>
-            <Typography className={classes.title} variant='h3'>Seu carrinho de compras.</Typography>
+            <Typography className={classes.title} variant='h3' gutterBottom>Seu carrinho de compras.</Typography>
             { !cart.line_items ? <EmptyCart /> : <FilledCart/>}     
         </Container> 
     )
