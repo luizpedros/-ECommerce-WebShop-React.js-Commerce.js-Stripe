@@ -1,19 +1,28 @@
 //criar componete funcional usando "rafce" que nos permite criar com facilidade componetes funcionais
-import React from "react";
-//produtos
-//import Products from "./components/Products/Products";
-//navbar
-//import Navbar from "./components/Navbar/Navbar";
+import React, { useState, useEffect } from "react";
+import { commerce } from "./lib/commerce";
 
-
-//para importar conponetes demaira mais facil
 import{Products, Navbar} from './components';
+import { useSearchParams } from "react-router-dom";
 
 const App = () => {
+    const [products, setProducts] = useState([]);
+
+    const fetchProducts = async () => {
+        const {data} = await commerce.products.list();
+
+        setProducts(data);
+    }
+
+    //gancho
+    useEffect(() => {
+        fetchProducts();
+    }, [])
+
     return(
         <div>
             <Navbar />
-            <Products />
+            <Products products={products} />
         </div>
     )
 }
