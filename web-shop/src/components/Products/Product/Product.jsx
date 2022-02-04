@@ -26,7 +26,7 @@ const Product = ({product}) => {
             </Typography>
         </CardContent>
         <CardActions disableSpacing className={classes.CardActions}>
-            <IconButton Aria-label="Add to Cart">
+            <IconButton aria-label="Add to Cart">
                 <AddShoppingCart />
             </IconButton>
         </CardActions>
