@@ -1,8 +1,8 @@
 //criar componete funcional usando "rafce" que nos permite criar com facilidade componetes funcionais
 import React, { useState, useEffect } from "react";
 import { commerce } from "./lib/commerce";
-import{Products, Navbar, Cart} from './components';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import{Products, Navbar, Cart, Checkout } from './components';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
 const App = () => {
@@ -19,8 +19,6 @@ const App = () => {
     const fetchCart = async () => {
         setCart(await commerce.cart.retrieve());
     }
-
-    
 
     const handleAddToCart = async (productId, quantity) => {
         const {cart} = await commerce.cart.add(productId, quantity);
@@ -66,6 +64,9 @@ const App = () => {
                         handleUpdateCartQty={handleUpdateCartQty}
                         handleRemoveFromCart={handleRemoveFromCart} 
                         handleEmptyCart={handleEmptyCart} />
+                    </Route>
+                    <Route exact path="/checkout">
+                        <Checkout />
                     </Route>
                 </Switch>
             </div>
