@@ -6,7 +6,7 @@ import useStyles from './styles'
 import CartItem from './CartItem/CartItem';
 
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) => {
     const classes = useStyles();
 
     console.log(cart)
@@ -15,13 +15,15 @@ const Cart = ({ cart }) => {
             <Link to='/' className={classes.link}>adicione itens para começar</Link>!
         </Typography>
     );
+    
+    if (!cart.line_items) return 'Loading ...';    
 
     const FilledCart = () => (
         <>
             <Grid container spacing={3}>
                 {cart.line_items.map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
-                        <CartItem item={item}/>
+                        <CartItem item={item} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart}/>
                     </Grid>
                 ))}
             </Grid>
@@ -29,20 +31,18 @@ const Cart = ({ cart }) => {
                 <Typography variant='h4'>Subtotal: {cart.subtotal.formatted.with_symbol}
                 </Typography>
                 <div>
-                    <Button className={classes.emptyButton} size='large' type='button' variant='contained' color='secondary'>Carrinho vazio</Button>
+                    <Button className={classes.emptyButton} size='large' type='button' variant='contained' color='secondary' onClick={handleEmptyCart}>Carrinho vazio</Button>
                     <Button className={classes.checkoutButton} size='large' type='button' variant='contained' color='primary'>Checkout</Button>
                 </div> 
             </div>
         </>
     )
 
-    if (!cart.line_items) return 'Loading ...';
-  
     return(    
         <Container>
             <div className={classes.toolbar}/>
             <Typography className={classes.title} variant='h3' gutterBottom>Seu carrinho de compras.</Typography>
-            { !cart.line_items ? <EmptyCart /> : <FilledCart/>}     
+            { !cart.line_items.length ? EmptyCart()  : FilledCart()}     
         </Container> 
     )
 };
