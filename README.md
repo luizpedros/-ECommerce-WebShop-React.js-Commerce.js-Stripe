@@ -1,6 +1,5 @@
-# Web Shop
-### Projeto FullStack. 
-
+# Projeto FullStack. 
+## Primeiro desenvolvimento solo de um WebShop.
 ### Tecnologias:
 #### - Linguagem: JavaScript/ReactJs
 #### - Bibliotecas: MUI (material-ui), React Router, React Hook
