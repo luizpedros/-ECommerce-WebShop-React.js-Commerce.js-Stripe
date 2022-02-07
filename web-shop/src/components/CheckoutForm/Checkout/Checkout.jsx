@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { commerce } from '../../../lib/commerce';
 import useStyles from './styles'
 import AdressForm from '../AdressForm';
@@ -12,6 +12,8 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
+    const [isFinished, setIsFinished] = useState(false);
+    const history = useHistory();
     const classes = useStyles();
 
     useEffect(() => {
@@ -21,7 +23,7 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
 
                 setCheckoutToken(token);
             } catch (error) {
-                
+                history.pushState('/');
             }
         }
         generateToken();
@@ -36,6 +38,12 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
         nextStep();
     }
 
+    const timeout = () => {
+        setTimeout(() => {
+            setIsFinished(true);
+        }, 3000)
+    }
+
     let Confirmation = () => (order.customer ? (
         <>
           <div>
@@ -46,6 +54,17 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
           <br />
           <Button component={Link} variant="outlined" type="button" to="/">Voltar para home</Button>
         </>
+      ) : isFinished ? (
+            <>
+                <div>
+                <Typography variant="h5">Obrigado pela sua preferência!</Typography>
+                <Divider className={classes.divider} />
+                
+                </div>
+                <br />
+                <Button component={Link} variant="outlined" type="button" to="/">Voltar para home</Button>
+            </>
+
       ) : (
         <div className={classes.spinner}>
           <CircularProgress />
@@ -57,14 +76,14 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
           <>
             <Typography variant="h5">Error: {error}</Typography>
             <br />
-            <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+            <Button component={Link} variant="outlined" type="button" to="/">Voltar para home</Button>
           </>
         );
       }
 
     const Form = () => activeStep === 0
         ? <AdressForm checkoutToken={checkoutToken} next={next}/>
-        : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout}/>
+        : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} timeout={timeout}/>
 
 
     return( 
