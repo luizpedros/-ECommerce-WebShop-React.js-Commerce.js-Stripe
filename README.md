@@ -14,3 +14,4 @@
 
 
 # Demo
+![Fluxo normal](https://github.com/luizpedros/Consultar-CEP---ReactJs/blob/main/gifs-demo/fluxo_Trim.gif?raw=true)
