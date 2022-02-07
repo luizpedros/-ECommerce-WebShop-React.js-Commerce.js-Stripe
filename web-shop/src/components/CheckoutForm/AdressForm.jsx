@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import FormInput from './CustomTextField';
 import { commerce } from '../../lib/commerce';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 
 
-const AdressForm = ({ checkoutToken }) => {
+const AdressForm = ({ checkoutToken, next }) => {
     const [shippingCountries, setShippingCountries] = useState([]);
     const [shippingCountry, setShippingCountry] = useState('');
     const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -50,14 +51,14 @@ const AdressForm = ({ checkoutToken }) => {
     }, [shippingCountry]);
 
     useEffect(() => {
-        if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, setShippingOption)
+        if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision)
     }, [shippingSubdivision])
 
   return (
     <>
         <Typography variant='h6' gutterBottom>Endereço para envio</Typography>
         <FormProvider {... methods}>
-            <form onSubmit=''>
+            <form onSubmit={methods.handleSubmit((data)=> next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
                 <Grid container spacing={3}>
                     <FormInput name='firstName' label='Primeiro nome' />
                     <FormInput name='lastName' label='Segundo nome' />
@@ -95,9 +96,13 @@ const AdressForm = ({ checkoutToken }) => {
                             ))}
                         </Select>
                     </Grid>
-                    
-                    
                 </Grid>
+                <br/>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <Button component={Link} to='/cart' variant='outlined'>Voltar</Button>
+                    <Button type='submit' variant='contained' color='primary'>Continuar</Button>
+
+                </div>
             </form>
         </FormProvider>
     </>
