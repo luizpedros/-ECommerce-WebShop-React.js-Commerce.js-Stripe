@@ -13,5 +13,5 @@
 3. execute o projeto com npm start ou yarn start
 
 
-# Demo
+# Demo (video demonstração)
 ![Fluxo normal](https://github.com/luizpedros/Projeto-FullStack-Ecommerce-Reactjs/blob/main/demo-webshop.gif?raw=true)
