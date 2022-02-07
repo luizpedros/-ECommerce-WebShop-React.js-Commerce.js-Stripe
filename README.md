@@ -3,7 +3,7 @@
 
 ### Tecnologias:
 #### - Linguagem: JavaScript/ReactJs
-#### - Bibliotecas:MUI(material-ui), React Router, React Hook
+#### - Bibliotecas: MUI (material-ui), React Router, React Hook
 #### - APIs: CommerceJs e Stripe
 
 ## Link para ver no browser: https://primeiro-site-devluizpedro.netlify.app/
