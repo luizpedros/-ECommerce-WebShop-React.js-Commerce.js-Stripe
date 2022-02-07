@@ -1,1 +1,1 @@
-# Loja-Reactjs-Commercejs-Stripe
+# Loja
