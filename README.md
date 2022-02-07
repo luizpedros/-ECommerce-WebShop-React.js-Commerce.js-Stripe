@@ -14,4 +14,4 @@
 
 
 # Demo
-![Fluxo normal](https://github.com/luizpedros/Consultar-CEP---ReactJs/blob/main/gifs-demo/fluxo_Trim.gif?raw=true)
+![Fluxo normal](https://github.com/luizpedros/Projeto-FullStack-Ecommerce-Reactjs/blob/main/demo-webshop.gif?raw=true)
